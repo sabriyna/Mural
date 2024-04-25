@@ -53,9 +53,17 @@ public class MainActivity extends AppCompatActivity {
                     mensagem("E-mail inválido");
                 }
                 else if(validaEmailSenha(email, senha)){
-                    Intent intent = new Intent(getApplicationContext(), Principal.class);
-                    intent.putExtra("enviaEmail", email);
-                    startActivity(intent);
+                    if (email.equals("adm@fmpsc.edu.br")) {
+                        // Redirect to TelaAdm
+                        Intent intent = new Intent(getApplicationContext(), TelaAdm.class);
+                        intent.putExtra("enviaEmail", email);
+                        startActivity(intent);
+                    } else {
+                        // Redirect to Principal
+                        Intent intent = new Intent(getApplicationContext(), Principal.class);
+                        intent.putExtra("enviaEmail", email);
+                        startActivity(intent);
+                    }
 
                 }else {
                     mensagem("Longin Incorreto!");
@@ -69,9 +77,9 @@ public class MainActivity extends AppCompatActivity {
     private boolean validaEmailSenha(String email, String senha) {
         boolean sucesso=false;
 
-        if(email.equals("Login@dominio.com") && senha.equals("12345")){
+        if(email.equals("sabrina.ramos@aluno.fmpsc.edu.br") && senha.equals("12345")){
             sucesso=true;
-        }else if (email.equals("Adm@dominio.com") && senha.equals("adm")){
+        }else if (email.equals("adm@fmpsc.edu.br") && senha.equals("adm")){
             sucesso=true;
         }
 
